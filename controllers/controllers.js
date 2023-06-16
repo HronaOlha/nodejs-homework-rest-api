@@ -5,6 +5,7 @@ const {
   addContact,
   updateContact,
 } = require("../models/contacts");
+const Contact = require("../models/contactModel");
 
 const { HttpError } = require("../helpers");
 
@@ -33,6 +34,8 @@ const getById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
+  const newContact = await Contact.create(req.body);
+
   try {
     const { error } = addSchema.validate(req.body);
     if (error) {
@@ -40,7 +43,7 @@ const add = async (req, res, next) => {
     }
 
     const result = await addContact(req.body);
-    res.status(201).json(result);
+    // res.status(201).json(result);
   } catch (error) {
     next(error);
   }
