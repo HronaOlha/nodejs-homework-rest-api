@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 // const userSchema = mongoose.Schema({
 //   name: { type: String, required: true },
@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 //   password: { type: String, required: true },
 // });
 
-const contactSchema = mongoose.Schema({
+const contactSchema = new Schema({
   name: {
     type: String,
     required: [true, "Set name for contact"],
@@ -17,12 +17,13 @@ const contactSchema = mongoose.Schema({
   phone: {
     type: String,
   },
-  // favorite: {
-  //   type: Boolean,
-  //   default: false,
-  // },
+  favorite: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const Contact = mongoose.model("contact", contactSchema);
+const Contact = model("contact", contactSchema);
+// const Contact = model("contacts", contactSchema);
 
 module.exports = Contact;

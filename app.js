@@ -1,10 +1,26 @@
+// const dotenv = require("dotenv");
+// const mongoose = require("mongoose");
+
+// dotenv.config({ path: "./.env" });
+
+// mongoose
+//   .connect(process.env.MONGO_URL)
+//   .then(() => {
+//     console.log("Database connection successful");
+//     console.log(process.env.MONGO_URL);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//     process.exit(1);
+//   });
+
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 // const mongoose = require("mongoose");
 
-dotenv.config({ path: "./.env" });
+// dotenv.config({ path: "./.env" });
 
 const contactsRouter = require("./routes/api/contacts");
 
@@ -16,6 +32,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 //   .connect(process.env.MONGO_URL)
 //   .then(() => {
 //     console.log("Database connection successful");
+//     // console.log(process.env.MONGO_URL);
 //   })
 //   .catch((err) => {
 //     console.log(err);
