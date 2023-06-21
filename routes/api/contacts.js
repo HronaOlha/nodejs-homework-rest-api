@@ -1,23 +1,24 @@
 const express = require("express");
 
-const {
-  getAll,
-  // getById,
-  // add,
-  // deleteById,
-  // editById,
-} = require("../../controllers");
+const ctrl = require("../../controllers");
+
+const { addSchema } = require("../../models/contact");
+
+// FIXME: isValidId
+const { validateBody } = require("../../middlewares");
 
 const router = express.Router();
 
-router.get("/", getAll);
+router.get("/", ctrl.getAll);
 
-// router.get("/:contactId", getById);
+router.get("/:contactId", ctrl.getById);
 
-// router.post("/", add);
+router.post("/", validateBody(addSchema), ctrl.add);
 
-// router.delete("/:contactId", deleteById);
+router.patch("/:contactId/favorite", ctrl.editFavorite);
 
-// router.put("/:contactId", editById);
+router.delete("/:contactId", ctrl.deleteById);
+
+router.put("/:contactId", validateBody(addSchema), ctrl.editById);
 
 module.exports = router;
