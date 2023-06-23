@@ -6,10 +6,13 @@ const app = require("./app");
 
 mongoose.set("strictQuery", true);
 
+// const ctrl = require("./controllers");
+
 mongoose
   .connect(MONGO_URL)
   .then(() => {
     app.listen(PORT, () => {
+      // console.log("ctrl.getAll", ctrl.getAll);
       console.log("Database connection successful!");
     });
   })
