@@ -15,6 +15,14 @@ router.post(
   ctrlAuth.register
 );
 
+router.get("/verify/:verificationCode", ctrlAuth.verifyEmail);
+
+router.post(
+  "/verify",
+  validateBody(userSchemas.emailSchema),
+  ctrlAuth.resendVerifyEmail
+);
+
 router.post("/login", validateBody(userSchemas.loginSchema), ctrlAuth.login);
 
 router.get("/current", authenticate, ctrlAuth.getCurrent);
